@@ -17,11 +17,11 @@ internal struct Simulator: Decodable {
 		}
 	}
 
-	var isAvailable: Bool {
-		return availability == .available
+	var _isAvailable: Bool {
+		return isAvailable == .available
 	}
 
-	var availability: Availability
+	var isAvailable: Availability
 	var name: String
 	var udid: UUID
 }
@@ -52,5 +52,5 @@ internal func selectAvailableSimulator(of sdk: SDK, from data: Data) -> Simulato
 		return nil
 	}
 	return devices[latestOSName]?
-		.first { $0.isAvailable }
+		.first { $0._isAvailable }
 }
