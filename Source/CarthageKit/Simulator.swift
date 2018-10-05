@@ -9,7 +9,7 @@ internal struct Simulator: Decodable {
 		init(from decoder: Decoder) throws {
 			let container = try decoder.singleValueContainer()
 			let rawString = try container.decode(String.self)
-			if rawString == "(available)" {
+			if rawString == "(available)" || rawString == "YES" {
 				self = .available
 			} else {
 				self = .unavailable
