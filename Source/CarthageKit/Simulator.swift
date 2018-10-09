@@ -18,10 +18,17 @@ internal struct Simulator: Decodable {
 	}
 
 	var _isAvailable: Bool {
-		return isAvailable == .available
+		if let isAvailable = isAvailable {
+			return isAvailable == .available
+		} else if let availability = availability {
+			return availability == .available
+		} else {
+			return false
+		}
 	}
 
-	var isAvailable: Availability
+	var isAvailable: Availability?
+	var availability: Availability?
 	var name: String
 	var udid: UUID
 }
